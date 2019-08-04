@@ -6,7 +6,8 @@ var express = require("express"),
 	expressSanitizier = require("express-sanitizer");
 
 // App config
-mongoose.connect("mongodb://localhost:27017/restful_blog_app", { useNewUrlParser: true });
+// mongoose.connect("mongodb://localhost:27017/restful_blog_app", { useNewUrlParser: true });
+mongoose.connect("mongodb+srv://onurcokyasar:123@cluster0-3oiad.mongodb.net/test?retryWrites=true&w=majority", { useNewUrlParser: true });
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static("public"));
@@ -103,6 +104,9 @@ app.delete("/blogs/:id", function(req, res){
 	});
 });
 
-app.listen(3000, function() { 
-  console.log('Server listening on port 3000'); 
+// app.listen(3000, function() { 
+//   console.log('Server listening on port 3000'); 
+// });
+app.listen(process.env.PORT, process.env.IP, function() { 
+  console.log('YelpCamp server started'); 
 });
